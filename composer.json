@@ -1,0 +1,14 @@
+{
+    "name": "josh/simplehealth",
+    "authors": [
+        {
+            "name": "Joshua Thornton",
+            "email": "jshthornton@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "~4.8",
+        "nicolopignatelli/valueobjects": "~2.0"
+    }
+}
