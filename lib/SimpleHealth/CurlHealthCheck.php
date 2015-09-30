@@ -33,14 +33,8 @@ class CurlHealthCheck implements HealthCheckInterface {
     // Do request. Head to minimise RTT
     $curl->head($this->url);
 
-    if ($curl->error) {
-      throw new \Exception($curl->errorCode . ': ' . $curl->errorMessage);
-    }
-
-    $http_status = curl_getinfo($curl->curl, CURLINFO_HTTP_CODE);
-
     $curl->close();
 
-    return $http_status;
+    return $curl;
   }
 }
