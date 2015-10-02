@@ -28,19 +28,10 @@ class CurlHealthCheck implements HealthCheckInterface {
     $curl->setOpt(CURLOPT_FOLLOWLOCATION, true); // Follows redirects.
     $curl->setOpt(CURLOPT_RESOLVE, [$this->getResolveHost()]); // All services should be on the local machine.
 
-    echo $this->getResolveHost();
-
     // Do request. Head to minimise RTT
     $curl->head($this->url);
 
-    if ($curl->error) {
-      throw new \Exception($curl->errorCode . ': ' . $curl->errorMessage);
-    }
-
-    $http_status = curl_getinfo($curl->curl, CURLINFO_HTTP_CODE);
-
     $curl->close();
-
-    return $http_status;
+    return $curl;
   }
 }
