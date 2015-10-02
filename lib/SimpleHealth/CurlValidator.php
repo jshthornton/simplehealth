@@ -1,22 +1,14 @@
 <?php
 namespace SimpleHealth;
 
-use \Curl\Curl as Curl;
 use \SimpleHealth\ValidatorReport as ValidatorReport;
 
 class CurlValidator {
-	protected $curl;
-
-	function __construct(Curl $curl) {
-		$this->curl = $curl;
+	function __construct() {
 	}
 
-	public function validate() {
-		if($this->curl->error) {
-			return new ValidatorReport(false, $this->curl->errorMessage);
-		}
-
-		$http_status = curl_getinfo($curl->curl, CURLINFO_HTTP_CODE);
+	public function validate(\Guzzle\ResponseInterface $reponse) {
+		$http_status = $reponse->getStatusCode();
 
 		if($http_status === 200) {
 			return new ValidatorReport(true, '');
