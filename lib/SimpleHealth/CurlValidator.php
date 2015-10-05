@@ -2,7 +2,7 @@
 namespace SimpleHealth;
 
 use \SimpleHealth\ValidatorInterface as ValidatorInterface;
-use \SimpleHealth\ValidatorReport as ValidatorReport;
+use \SimpleHealth\ValidatorResult as ValidatorResult;
 
 class CurlValidator implements ValidatorInterface {
 	function __construct() {
@@ -12,9 +12,9 @@ class CurlValidator implements ValidatorInterface {
 		$http_status = $data->getStatusCode();
 
 		if($http_status === 200) {
-			return new ValidatorReport(true, '');
+			return new ValidatorResult(true, '');
 		}
 
-		return new ValidatorReport(false, "Unhealthy http response code ({$http_status})");
+		return new ValidatorResult(false, "Unhealthy http response code ({$http_status})");
 	}
 }

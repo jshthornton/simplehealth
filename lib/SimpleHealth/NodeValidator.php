@@ -1,6 +1,6 @@
 <?php
 namespace SimpleHealth;
-use \SimpleHealth\ValidatorReport as ValidatorReport;
+use \SimpleHealth\ValidatorResult as ValidatorResult;
 use \SimpleHealth\ValidatorInterface as ValidatorInterface;
 
 class NodeValidator implements ValidatorInterface {
@@ -10,10 +10,10 @@ class NodeValidator implements ValidatorInterface {
 	public function isValid($reports) {
 		foreach ($reports as $report) {
 			if($report->pass === false) {
-				return new ValidatorReport(false, $report->message);
+				return new ValidatorResult(false, $report->message);
 			}
 		}
 
-		return new ValidatorReport(true, '');
+		return new ValidatorResult(true, '');
 	}
 }

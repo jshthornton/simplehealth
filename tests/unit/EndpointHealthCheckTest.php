@@ -9,7 +9,7 @@ class EndpointHealthCheckTest extends PHPUnit_Framework_TestCase {
     $mechanism_mock = \Mockery::mock('\SimpleHealth\EndpointMechanismInterface');
     $validator_mock = \Mockery::mock('\SimpleHealth\ValidatorInterface');
     $response_mock = \Mockery::mock('\Guzzle\ResponseInterface');
-    $report_mock = \Mockery::mock('\SimpleHealth\ValidatorReport');
+    $report_mock = \Mockery::mock('\SimpleHealth\ValidatorResult');
 
     $mechanism_mock->shouldReceive('request')->andReturn($response_mock);
     $validator_mock->shouldReceive('isValid')->andReturn($report_mock);

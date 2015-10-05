@@ -1,9 +1,8 @@
 <?php
 namespace SimpleHealth;
 
-class ValidatorReport {
-
-	function __construct($pass, $message) {
+class NodeReport {
+	function __construct($pass, $message, $endpoint_reports) {
 		$this->pass = $pass;
 		$this->message = $message;
 	}

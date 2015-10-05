@@ -18,8 +18,11 @@ class NodeHealthCheck {
 			$endpoint_reports[] = $healthcheck->check();
 		}
 
-		$node_report = $this->validator->isValid($endpoint_reports);
-
-		return $node_report;
+		$validator_result = $this->validator->isValid($endpoint_reports);
+		if($validator_result->pass === true) {
+			return new \SimpleHealth\NodeReport(true, '', $endpoint_reports);
+		} else {
+			return new \SimpleHealth\NodeReport(false, $validator_result->message. $endpoint_reports);
+		}
 	}
 }

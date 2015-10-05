@@ -10,7 +10,7 @@ class NodeHealthCheckTest extends PHPUnit_Framework_TestCase {
   	$heatlhcheck_factory_mock = \Mockery::mock('\SimpleHealth\EndpointHealthCheckFactory');
   	$healthcheck_mock = \Mockery::mock('\SimpleHealth\EndpointHealthCheck');
   	$endpoint_report_mock = \Mockery::mock('\SimpleHealth\EndpointReport');
-  	$node_report_mock = \Mockery::mock('\SimpleHealth\ValidatorReport');
+  	$node_report_mock = \Mockery::mock('\SimpleHealth\ValidatorResult');
 
   	$validator_mock->shouldReceive('isValid')->andReturn($node_report_mock);
   	$heatlhcheck_factory_mock->shouldReceive('make')->andReturn($healthcheck_mock);
