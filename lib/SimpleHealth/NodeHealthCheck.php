@@ -2,7 +2,7 @@
 namespace SimpleHealth;
 
 class NodeHealthCheck {
-	function __construct($endpoints, ValidatorInterface $validator, EndpointHealthCheckFactory $healthcheck_factory) {
+	function __construct(array $endpoints, ValidatorInterface $validator, EndpointHealthCheckFactory $healthcheck_factory) {
 		$this->endpoints = $endpoints;
 		$this->validator = $validator;
 		$this->healthcheckFactory = $healthcheck_factory;
@@ -21,7 +21,7 @@ class NodeHealthCheck {
 		return $endpoint_reports;
 	}
 
-	protected function createNodeReportFromValidatorResult(\SimpleHealth\ValidatorResult $result, $endpoint_reports) {
+	protected function createNodeReportFromValidatorResult(\SimpleHealth\ValidatorResult $result, array $endpoint_reports) {
 		if($result->pass === true) {
 			return new \SimpleHealth\NodeReport(true, '', $endpoint_reports);
 		} else {
