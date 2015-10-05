@@ -2,9 +2,9 @@
 namespace SimpleHealth;
 
 class EndpointReport {
-	protected $endpoint;
-	protected $pass;
-	protected $message;
+	public $endpoint;
+	public $pass;
+	public $message;
 
 	function __construct($endpoint, $pass, $message) {
 		$this->endpoint = $endpoint;
