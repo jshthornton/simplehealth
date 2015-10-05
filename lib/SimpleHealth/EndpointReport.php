@@ -1,7 +1,7 @@
 <?php
 namespace SimpleHealth;
 
-class EndpointReport {
+class EndpointReport implements \SimpleHealth\ReportInterface {
 	public $endpoint;
 	public $pass;
 	public $message;
