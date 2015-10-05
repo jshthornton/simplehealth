@@ -1,14 +1,15 @@
 <?php
 namespace SimpleHealth;
 
+use \SimpleHealth\ValidatorInterface;
 use \SimpleHealth\ValidatorReport as ValidatorReport;
 
-class CurlValidator {
+class CurlValidator implements ValidatorInterface {
 	function __construct() {
 	}
 
-	public function validate(\Guzzle\ResponseInterface $reponse) {
-		$http_status = $reponse->getStatusCode();
+	public function isValid(\Guzzle\ResponseInterface $data) {
+		$http_status = $data->getStatusCode();
 
 		if($http_status === 200) {
 			return new ValidatorReport(true, '');
