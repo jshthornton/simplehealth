@@ -1,7 +1,7 @@
 <?php
 namespace SimpleHealth;
 
-use \SimpleHealth\ValidatorInterface;
+use \SimpleHealth\ValidatorInterface as ValidatorInterface;
 use \SimpleHealth\ValidatorReport as ValidatorReport;
 
 class CurlValidator implements ValidatorInterface {
