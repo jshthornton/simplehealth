@@ -9,7 +9,7 @@ class CurlValidatorTest extends PHPUnit_Framework_TestCase {
   	$response_mock->shouldReceive('getStatusCode')->andReturn(200);
 
   	$subject = new CurlValidator();
-  	$report = $subject->validate($response_mock);
+  	$report = $subject->isValid($response_mock);
 
   	$this->assertEquals($report->pass, true);
   }
@@ -19,7 +19,7 @@ class CurlValidatorTest extends PHPUnit_Framework_TestCase {
   	$response_mock->shouldReceive('getStatusCode')->andReturn(500);
 
   	$subject = new CurlValidator();
-  	$report = $subject->validate($response_mock);
+  	$report = $subject->isValid($response_mock);
 
   	$this->assertEquals($report->pass, false);
   }
