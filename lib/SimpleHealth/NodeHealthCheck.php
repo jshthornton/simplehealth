@@ -8,7 +8,7 @@ class NodeHealthCheck {
 		$this->healthcheckFactory = $healthcheck_factory;
 	}
 
-	public function check() {
+	protected function collectEndpointReports() {
 		$endpoint_reports = [];
 
 		$healthcheck_factory = $this->healthcheckFactory;
@@ -18,11 +18,21 @@ class NodeHealthCheck {
 			$endpoint_reports[] = $healthcheck->check();
 		}
 
-		$validator_result = $this->validator->isValid($endpoint_reports);
-		if($validator_result->pass === true) {
+		return $endpoint_reports;
+	}
+
+	protected function createNodeReportFromValidatorResult(\SimpleHealth\ValidatorResult $result, $endpoint_reports) {
+		if($result->pass === true) {
 			return new \SimpleHealth\NodeReport(true, '', $endpoint_reports);
 		} else {
-			return new \SimpleHealth\NodeReport(false, $validator_result->message. $endpoint_reports);
+			return new \SimpleHealth\NodeReport(false, $result->message. $endpoint_reports);
 		}
+	}
+
+	public function check() {
+		$endpoint_reports = $this->collectEndpointReports();
+
+		$result = $this->validator->isValid($endpoint_reports);
+		return $this->createNodeReportFromValidatorResult($result, $endpoint_reports);
 	}
 }
