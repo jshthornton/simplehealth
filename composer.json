@@ -1,5 +1,6 @@
 {
     "name": "josh/simplehealth",
+    "version": "0.1.1",
     "authors": [
         {
             "name": "Joshua Thornton",
@@ -8,11 +9,15 @@
     ],
     "require": {
         "nicolopignatelli/valueobjects": "~2.0",
-        "vlucas/phpdotenv": "~2.0",
         "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.8",
         "mockery/mockery": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "SimpleHealth\\": "lib/SimpleHealth"
+        }
     }
 }
