@@ -8,13 +8,14 @@ use \SimpleHealth\EndpointHealthCheckFactory as EndpointHealthCheckFactory;*/
 
 class SimpleHealth {
 	protected $endpoints;
+	protected $nodeHealthCheck;
 
-	function __construct($endpoints) {
+	function __construct($endpoints, $node_healthcheck) {
 		$this->endpoints = $endpoints;
+		$this->nodeHealthCheck = $node_healthcheck;
 	}
 
 	public function run() {
-		$node_healthcheck = new NodeHealthCheck();
-		return $node_healthcheck->check();
+		return $this->nodeHealthCheck->check();
 	}
 }
