@@ -1,11 +1,11 @@
 <?php
 use \SimpleHealth\CurlValidator as CurlValidator;
-use \Guzzle\ResponseInterface;
+use \GuzzleHttp\Psr7\Response;
 use \Mockery;
 
 class CurlValidatorTest extends PHPUnit_Framework_TestCase {
   public function testWhen200CodeValidatePasses() {
-  	$response_mock = \Mockery::mock('\Guzzle\ResponseInterface');
+  	$response_mock = \Mockery::mock('\GuzzleHttp\Psr7\Response');
   	$response_mock->shouldReceive('getStatusCode')->andReturn(200);
 
   	$subject = new CurlValidator();
@@ -15,7 +15,7 @@ class CurlValidatorTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testWhenNon200CodeValidateFails() {
-  	$response_mock = \Mockery::mock('\Guzzle\ResponseInterface');
+  	$response_mock = \Mockery::mock('\GuzzleHttp\Psr7\Response');
   	$response_mock->shouldReceive('getStatusCode')->andReturn(500);
 
   	$subject = new CurlValidator();
