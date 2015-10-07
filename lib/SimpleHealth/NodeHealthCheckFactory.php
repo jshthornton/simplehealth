@@ -3,7 +3,7 @@ namespace SimpleHealth;
 
 class NodeHealthCheckFactory {
 
-	public function make($endpoints) {
+	public function make(array $endpoints) {
 		return new \SimpleHealth\NodeHealthCheck(
 			$endpoints,
 			new \SimpleHealth\NodeValidator(),

@@ -10,8 +10,8 @@ class SimpleHealth {
 	protected $endpoints;
 	protected $nodeHealthCheck;
 
-	function __construct($endpoints, $node_healthcheck) {
-		$this->endpoints = $endpoints;
+	function __construct(array $endpoints, $node_healthcheck) {
+		$this->endpoints = Collection::fromNative($endpoints);
 		$this->nodeHealthCheck = $node_healthcheck;
 	}
 
