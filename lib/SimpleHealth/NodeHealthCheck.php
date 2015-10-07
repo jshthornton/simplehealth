@@ -1,7 +1,7 @@
 <?php
 namespace SimpleHealth;
 
-use ValueObjects\Structure\Collection as Collection;
+use \ValueObjects\Structure\Collection as Collection;
 
 class NodeHealthCheck {
 	function __construct(array $endpoints, ValidatorInterface $validator, EndpointHealthCheckFactory $healthcheck_factory) {

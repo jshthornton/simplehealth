@@ -7,7 +7,7 @@ class NodeValidator implements ValidatorInterface {
 	function __construct() {
 	}
 
-	public function isValid($reports) {
+	public function isValid(array $reports) {
 		foreach ($reports as $report) {
 			if($report->pass === false) {
 				return new ValidatorResult(false, $report->message);

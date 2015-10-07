@@ -1,13 +1,17 @@
 <?php
 namespace SimpleHealth;
 
+use \SimpleHealth\NodeHealthCheck as NodeHealthCheck;
+use \SimpleHealth\NodeValidator as NodeValidator;
+use \SimpleHealth\EndpointHealthCheckFactory as EndpointHealthCheckFactory;
+
 class NodeHealthCheckFactory {
 
 	public function make(array $endpoints) {
-		return new \SimpleHealth\NodeHealthCheck(
+		return new NodeHealthCheck(
 			$endpoints,
-			new \SimpleHealth\NodeValidator(),
-			new \SimpleHealth\EndpointHealthCheckFactory()
+			new NodeValidator(),
+			new EndpointHealthCheckFactory()
 		);
 	}
 }

@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "nicolopignatelli/valueobjects": "~2.0",
+        "nicolopignatelli/valueobjects": "~3.0",
         "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
