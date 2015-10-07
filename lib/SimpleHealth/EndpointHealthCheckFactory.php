@@ -8,6 +8,6 @@ class EndpointHealthCheckFactory {
 	public function make(Url $endpoint) {
 		$client = new \GuzzleHttp\Client();
 
-		return new EndpointHealthCheck($endpoint, new CurlMechanism($client, $url), new CurlValidator());
+		return new EndpointHealthCheck($endpoint, new CurlMechanism($client, $endpoint), new CurlValidator());
 	}
 }
