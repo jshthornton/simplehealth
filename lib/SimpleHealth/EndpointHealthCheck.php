@@ -4,12 +4,13 @@ namespace SimpleHealth;
 use \SimpleHealth\EndpointMechanismInterface as EndpointMechanismInterface;
 use \SimpleHealth\ValidatorInterface as ValidatorInterface;
 use \ValueObjects\StringLiteral\StringLiteral as StringLiteral;
+use \ValueObjects\Web\Url as Url;
 
 class EndpointHealthCheck {
 	protected $mechanism;
 
-	function __construct($endpoint, EndpointMechanismInterface $mechanism, ValidatorInterface $validator) {
-		$this->endpoint = StringLiteral::fromNative($endpoint);
+	function __construct(Url $endpoint, EndpointMechanismInterface $mechanism, ValidatorInterface $validator) {
+		$this->endpoint = $endpoint;
 		$this->mechanism = $mechanism;
 		$this->validator = $validator;
 	}
@@ -18,10 +19,10 @@ class EndpointHealthCheck {
 		try {
 			$response = $this->mechanism->request();
 		} catch (\GuzzleHttp\Exception\TransferException $ex) {
-			return new EndpointReport((string) $this->endpoint, false, $ex->getMessage());
+			return new EndpointReport($this->endpoint, false, StringLiteral::fromNative($ex->getMessage()));
 		}
 
 		$report = $this->validator->isValid($response);
-		return new EndpointReport((string) $this->endpoint, $report->pass, $report->message);
+		return new EndpointReport($this->endpoint, $report->pass, $report->message);
 	}
 }

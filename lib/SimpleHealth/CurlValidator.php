@@ -4,6 +4,7 @@ namespace SimpleHealth;
 use \SimpleHealth\ValidatorInterface as ValidatorInterface;
 use \SimpleHealth\ValidatorResult as ValidatorResult;
 use \GuzzleHttp\Psr7\Response;
+use \ValueObjects\StringLiteral\StringLiteral as StringLiteral;
 
 class CurlValidator implements ValidatorInterface {
 	function __construct() {
@@ -13,9 +14,9 @@ class CurlValidator implements ValidatorInterface {
 		$http_status = $data->getStatusCode();
 
 		if($http_status === 200) {
-			return new ValidatorResult(true, '');
+			return new ValidatorResult(true, StringLiteral::fromNative(''));
 		}
 
-		return new ValidatorResult(false, "Unhealthy http response code ({$http_status})");
+		return new ValidatorResult(false, StringLiteral::fromNative("Unhealthy http response code ({$http_status})"));
 	}
 }
