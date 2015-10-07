@@ -1,9 +1,11 @@
 <?php
 namespace SimpleHealth;
 
+use ValueObjects\Structure\Collection as Collection;
+
 class NodeHealthCheck {
 	function __construct(array $endpoints, ValidatorInterface $validator, EndpointHealthCheckFactory $healthcheck_factory) {
-		$this->endpoints = $endpoints;
+		$this->endpoints = Collection::fromNative($endpoints);
 		$this->validator = $validator;
 		$this->healthcheckFactory = $healthcheck_factory;
 	}
@@ -13,7 +15,7 @@ class NodeHealthCheck {
 
 		$healthcheck_factory = $this->healthcheckFactory;
 
-		foreach ($this->endpoints as $endpoint) {
+		foreach ($this->endpoints->toArray() as $endpoint) {
 			$healthcheck = $healthcheck_factory->make($endpoint);
 			$endpoint_reports[] = $healthcheck->check();
 		}
