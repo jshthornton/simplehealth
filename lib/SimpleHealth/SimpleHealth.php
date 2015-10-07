@@ -9,7 +9,7 @@ class SimpleHealth {
 	protected $nodeHealthCheck;
 
 	function __construct(Collection $endpoints, NodeHealthCheck $node_healthcheck) {
-		$this->endpoints = $endpoints);
+		$this->endpoints = $endpoints;
 		$this->nodeHealthCheck = $node_healthcheck;
 	}
 
