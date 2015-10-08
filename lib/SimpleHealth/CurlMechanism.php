@@ -15,9 +15,9 @@ class CurlMechanism implements EndpointMechanismInterface {
   }
 
   protected function getResolveHost() {
-/*    $port = $this->url->getPort();
+    $port = $this->url->getPort();
     $port = ($port instanceof NullPortNumber) ? 80 : $port;
-    return "{$this->url->getDomain()}:{$port}:127.0.0.1";*/
+    return "{$this->url->getDomain()}:{$port}:127.0.0.1";
   }
 
   public function request() {
