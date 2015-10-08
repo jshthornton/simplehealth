@@ -1,0 +1,11 @@
+machine:
+  timezone:
+    Asia/Singapore
+  php:
+    version: 5.5.21
+dependencies:
+  pre:
+    - composer clear-cache
+  post:
+test:
+  post:
