@@ -23,7 +23,7 @@ class NodeReportFormatterTest extends PHPUnit_Framework_TestCase {
 
   	$endpoint_report_mock->pass = true;
   	$endpoint_report_mock->message = clone $message_mock;
-  	$endpoint_report_mock->url = $url_mock;
+  	$endpoint_report_mock->endpoint = $url_mock;
 
   	$subject = new NodeReportFormatter($node_report_mock);
   	$formatted = $subject->format();
@@ -35,7 +35,7 @@ class NodeReportFormatterTest extends PHPUnit_Framework_TestCase {
   			(object) [
   				'pass' => true,
   				'message' => 'hello',
-  				'url' => 'http://www.php.net/'
+  				'endpoint' => 'http://www.php.net/'
   			]
   		]
   	]);

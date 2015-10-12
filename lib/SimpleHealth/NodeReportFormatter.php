@@ -19,7 +19,7 @@ class NodeReportFormatter {
 			return (object) [
 				'pass' => $endpoint_report->pass,
 				'message' => (string) $endpoint_report->message,
-				'url' => (string) $endpoint_report->url
+				'endpoint' => (string) $endpoint_report->endpoint
 			];
 		}, $report->endpointReports->toArray());
 
