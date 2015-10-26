@@ -30,9 +30,9 @@ class CurlMechanism implements EndpointMechanismInterface {
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_RESOLVE => [$this->getResolveHost()]
         ],
-        'timeout' => 5,
+        'timeout' => 15,
         'allow_redirects' => true,
-        'connect_timeout' => 5
+        'connect_timeout' => 15
     ]);
   }
 }
